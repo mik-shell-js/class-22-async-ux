@@ -1,0 +1,19 @@
+/*
+# Test the Server API
+*/
+@host http://localhost:8080
+###
+# @name produce
+GET /api/produce
+###
+GET /api/produce?category={{"vegetable"}}&country={{"USA"}}
+###
+# @ref produce
+# @name product
+GET /api/produce/{{produce[produce.length - 1]._id}}
+###
+# @ref produce
+GET /api/produce/{{produce[0]._id}}/buy
+###
+# @ref product
+DELETE /api/produce/{{produce[produce.length - 1]._id}}
